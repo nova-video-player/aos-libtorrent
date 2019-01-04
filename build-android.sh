@@ -20,7 +20,7 @@ for i in aarch64-linux-android arm-linux-androideabi x86;do
   AndroidBinariesPath=$AndroidBinariesPath:$AndroidNDKRoot/toolchains/llvm/prebuilt/${PlatformOS}-"${HOST}/bin/"
 done
 export PATH=$AndroidBinariesPath:$PATH
-export BOOST_ROOT=$REPO_TOP_DIR/native/newboost/boost_$BOOST_VERSION-$ARCH
+export BOOST_ROOT=$REPO_TOP_DIR/native/boost/boost_$BOOST_VERSION-$ARCH
 
 #cp $BOOST_ROOT/../configs/user-config-boost-$BOOST_VERSION-${ARCH}.jam user-config.jam
 #cp $BOOST_ROOT/../configs/user-config-boost-$BOOST_VERSION-${ARCH}.jam $BOOST_ROOT/tools/build/v2/user-config.jam
