@@ -37,6 +37,7 @@ libtool
 *.dirstamp
 
 bin
+bin-*
 config*
 Makefile
 build-aux
