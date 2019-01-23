@@ -9,7 +9,7 @@ set -e
 #
 #[ "$found" == 1 ] && exit 0
 
-for i in x86 armeabi-v7a;do
+for i in x86 x86_64 armeabi-v7a arm64-v8a ;do
 	rm -f bin
 	mkdir -p bin-"$i"
 	ln -s bin-"$i" bin
