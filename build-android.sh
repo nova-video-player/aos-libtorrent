@@ -6,7 +6,7 @@ set -e
 # - $REPO_TOP_DIR
 # - $1 = arch
 
-export BOOST_VERSION=1_69_0
+export BOOST_VERSION=1_72_0
 export PlatformOS=linux
 export HOST=x86_64
 
@@ -29,4 +29,4 @@ export BOOST_BUILD_PATH=$PWD
 os=linux
 [ `uname` == "Darwin" ] && os=macosx
 
-$BOOST_ROOT/tools/build/src/engine/bin.${os}x86_64/b2 toolset=clang-android link=static runtime-link=static release -j4
+$BOOST_ROOT/b2 toolset=clang-android link=static runtime-link=static release -j4
