@@ -29,4 +29,4 @@ export BOOST_BUILD_PATH=$PWD
 os=linux
 [ `uname` == "Darwin" ] && os=macosx
 
-$BOOST_ROOT/b2 toolset=clang-android link=static runtime-link=static release -j4
+$BOOST_ROOT/b2 toolset=clang-android link=static runtime-link=static target-os=android release -j32
