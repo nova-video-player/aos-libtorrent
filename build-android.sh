@@ -7,26 +7,14 @@ set -e
 # - $1 = arch
 
 export BOOST_VERSION=1_72_0
-export PlatformOS=linux
-export HOST=x86_64
-
 export ARCH=$1
 
-export AndroidNDKRoot=$android_ndk
+export BOOST_ROOT=$REPO_TOP_DIR/native/boost/boost_$BOOST_VERSION
+BOOST=boost_$BOOST_VERSION
 
-AndroidBinariesPath=""
-#toolchains/llvm/prebuilt/linux-x86_64/bin
-for i in aarch64-linux-android arm-linux-androideabi x86;do
-  AndroidBinariesPath=$AndroidBinariesPath:$AndroidNDKRoot/toolchains/llvm/prebuilt/${PlatformOS}-"${HOST}/bin/"
-done
-export PATH=$AndroidBinariesPath:$PATH
-export BOOST_ROOT=$REPO_TOP_DIR/native/boost/boost_$BOOST_VERSION-$ARCH
+export BOOST_BUILD_PATH=$REPO_TOP_DIR/native/boost/boost_$BOOST_VERSION-${ARCH}
 
-#cp $BOOST_ROOT/../configs/user-config-boost-$BOOST_VERSION-${ARCH}.jam user-config.jam
-#cp $BOOST_ROOT/../configs/user-config-boost-$BOOST_VERSION-${ARCH}.jam $BOOST_ROOT/tools/build/v2/user-config.jam
-export BOOST_BUILD_PATH=$PWD
-
-os=linux
-[ `uname` == "Darwin" ] && os=macosx
-
-$BOOST_ROOT/b2 toolset=clang-android link=static runtime-link=static target-os=android release -j32
+$BOOST_ROOT/b2 \
+    --build-dir=../boost/${BOOST}-${ARCH} \
+    --stagedir=../boost/${BOOST}-${ARCH}/stage \
+    toolset=clang-android link=static runtime-link=static target-os=android release -j32
