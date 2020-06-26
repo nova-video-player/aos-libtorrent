@@ -17,4 +17,4 @@ export BOOST_BUILD_PATH=$REPO_TOP_DIR/native/boost/boost_$BOOST_VERSION-${ARCH}
 $BOOST_ROOT/b2 \
     --build-dir=../boost/${BOOST}-${ARCH} \
     --stagedir=../boost/${BOOST}-${ARCH}/stage \
-    toolset=clang-android link=static runtime-link=static target-os=android release -j32
+    toolset=clang-android link=static runtime-link=static target-os=android release -j4
